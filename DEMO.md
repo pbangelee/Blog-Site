@@ -16,3 +16,8 @@ To clean up, return to `demo-content.html` and click **Remove demo content**. Th
 If an import is interrupted, click Add demo content again. It reuses its illustration uploads and skips completed letters. If you deliberately moved a demo letter to Trash, it is also kept there on re-import; remove the demo batch before starting completely fresh.
 
 Local checks cover the data counts, source assets, demo IDs, import retry rules, author gating, and cleanup scope. The import has not been run on your live project here; clicking the button performs it under your signed-in author account.
+
+## If a network request fails
+The loader now reports the exact failed stage: reading chapters, loading a local image, uploading to storage, saving, or publishing. The page must run through Live Server with the images folder beside it.
+
+If images or storage uploads fail, Add letters without photos uses the same demo stories and chapters but skips image requests. This fills the site and builder while photo uploads are investigated. Existing demo letters are still skipped. To replace a text-only batch with the full illustrated batch later, first remove the demo batch, then import again.

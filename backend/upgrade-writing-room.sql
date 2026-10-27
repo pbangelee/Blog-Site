@@ -71,7 +71,7 @@ drop policy if exists "Author manages published versions" on public.journal_publ
 create policy "Author manages published versions" on public.journal_public_entries for all to authenticated
 using(exists(select 1 from public.journal_author where user_id=(select auth.uid())))
 with check(exists(select 1 from public.journal_author where user_id=(select auth.uid())));
-insert into public.journal_public_entries
+insert into public.journal_public_entries(id,title,chapter_id,entry_date,excerpt,content,photos,blocks,cover_path,updated_at)
 select id,title,chapter_id,entry_date,excerpt,content,photos,blocks,cover_path,updated_at
 from public.journal_entries where status='published' on conflict(id) do nothing;
 -- Draft edits to a published letter must NEVER be publicly readable.

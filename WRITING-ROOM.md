@@ -1,3 +1,11 @@
+# Current Writing Room
+
+See `CURRENT-UPDATE.md` for the current interface and installation. The older notes below are retained for reference.
+
+# Shared-journey update
+
+See `NEXT-DRAFT.md` for the current interface and the one-time story-tools upgrade. Existing chapters are now called collections, and years follow story dates.
+
 # The simpler Writing Room
 
 ## Install this update

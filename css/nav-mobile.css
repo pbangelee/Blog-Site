@@ -1,0 +1,13 @@
+/* Mobile home: the Menu bar stays in place and fades smoothly from transparent
+   to cream as you scroll through the photo (same as desktop). It used to scroll
+   away with the page and only turn cream at the very end. */
+@media (max-width: 760px) {
+  body[data-page="home"] .site-header,
+  body[data-page="home"] .site-header.is-scrolled {
+    position: fixed !important; top: 0; left: 0; right: 0;
+  }
+  body[data-page="home"] .site-header:not(:has(.site-nav.open)),
+  body[data-page="home"] .site-header.is-scrolled:not(:has(.site-nav.open)) {
+    background: rgba(250, 245, 237, var(--hdr-p, 0)) !important;
+  }
+}

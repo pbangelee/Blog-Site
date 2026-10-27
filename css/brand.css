@@ -1,0 +1,13 @@
+/* Supplied logo artwork, with consistent sizing in every navigation state. */
+.brand .brand-logo{display:block;width:190px;height:auto;max-width:100%;filter:none}
+.site-footer .brand .brand-logo{width:215px}
+body[data-page="home"] .site-header .brand-logo{filter:invert(calc(1 - var(--hdr-t,0)))}
+body[data-page="home"] .site-header:has(.site-nav.open) .brand-logo{filter:none}
+body[data-page="home"] .photo-led-copy #home-title{margin:0 auto;width:min(35vw,410px);font-size:inherit;line-height:1}
+body[data-page="home"] .hero-logo{display:block;width:100%;height:auto;filter:invert(1);opacity:.97}
+body[data-page="home"] .photo-led-copy{top:11%;text-shadow:0 1px 12px #14203466}
+body[data-page="home"] .photo-led-copy .hero-subtitle{margin-top:20px}
+body[data-page="home"] .photo-led-opening::before{background:linear-gradient(180deg,rgba(36,46,78,.34),rgba(36,46,78,.14) 30%,transparent 52%),linear-gradient(0deg,rgba(28,30,44,.24),transparent 24%)}
+@media(max-width:1000px){.brand .brand-logo{width:165px}}
+@media(max-width:760px){body[data-page="home"] .photo-led-copy{top:90px}body[data-page="home"] .photo-led-copy #home-title{width:min(63vw,275px)}body[data-page="home"] .photo-led-copy .hero-subtitle{margin-top:16px;letter-spacing:.16em;font-size:.6rem}}
+@media(max-height:650px) and (min-width:761px){body[data-page="home"] .photo-led-copy #home-title{width:240px}body[data-page="home"] .photo-led-copy{top:90px}}

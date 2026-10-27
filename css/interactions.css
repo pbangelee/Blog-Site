@@ -1,0 +1,118 @@
+/* Quiet, responsive movement across the public journal. */
+@view-transition{navigation:auto}
+@media(prefers-reduced-motion:no-preference){
+ ::view-transition-old(root){animation:journal-page-out 180ms ease both}
+ ::view-transition-new(root){animation:journal-page-in 280ms ease both}
+ @keyframes journal-page-out{to{opacity:0}}
+ @keyframes journal-page-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+ .family-viewer[open],#viewer[open]{animation:journal-page-in 220ms ease both}
+}
+.journal-story-image,.entry-card-photo{overflow:hidden}
+.journal-story-image img,.entry-card-photo img{transition:transform .45s ease,opacity .25s ease}
+.journal-story h3 a,.entry-card h3 a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .25s ease;text-decoration:none}
+.journal-story h3 a:is(:hover,:focus-visible),.entry-card h3 a:is(:hover,:focus-visible){background-size:100% 1px;text-decoration:none}
+.btn,.journal-theme-links>a,.home-family-print,.journal-photo-strip>a,.family-photo-button,.family-index button{transition:translate .25s ease,background-color .25s ease,box-shadow .25s ease,color .25s ease}
+.journal-text-link>span[aria-hidden],.read-more{transition:transform .25s ease,color .25s ease}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .journal-story-image:hover img,.entry-card-photo:hover img{transform:scale(1.025)}
+ .btn:hover{translate:0 -3px}
+ .journal-theme-links>a:hover{translate:0 -4px;background:#fffaf466}
+ .home-family-collage .home-family-print:hover,.journal-photo-strip>a:hover{translate:0 -5px}
+ .journal-text-link:hover>span[aria-hidden]{transform:translateX(4px)}
+ .family-album .family-photo-button:hover{translate:0 -3px;box-shadow:0 12px 24px #49372e14}
+}
+.btn:active,.family-photo-button:active{translate:0 1px}
+/* An album of clean, aligned spreads, with full uncropped photographs. */
+.family-album{background:none}
+.family-album .family-cover{gap:64px;padding-block:65px 75px}
+.family-album .family-cover-copy{padding-right:35px;border-right:1px solid var(--line)}
+.family-album .family-cover-note{font:italic 1.55rem/1.4 var(--serif);color:var(--sage-deep);margin-bottom:25px}
+.family-album .family-cover-photo{max-width:440px;padding:0}
+.family-album .family-print,.family-album .family-cover-photo>.family-print{padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;transform:none;margin:0}
+.family-album .family-print:hover,.family-album .family-print:focus-within,.family-album .family-cover-photo>.family-print:hover{transform:none;box-shadow:none}
+.family-album .family-photo-button img{width:100%;height:auto;object-fit:contain;border-radius:3px}
+.family-album .family-print figcaption{font:400 .78rem/1.6 var(--serif);padding:12px 0;min-height:44px;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+.family-album .family-print figcaption>span:first-child{font:italic .8rem var(--serif)}
+.family-album .family-book-heading{padding-bottom:10px}
+.family-album .family-index{position:static;gap:10px 22px;padding:8px 0 20px}
+.family-album .family-index button{border-radius:0;border:0;border-bottom:2px solid transparent;padding:11px 3px;background:transparent;font:400 .95rem/1.5 var(--serif);color:var(--ink-soft)}
+.family-album .family-index button:hover{color:var(--sage-deep)}
+.family-album .family-index button[aria-pressed=true]{background:transparent;color:var(--sage-deep);border-color:var(--sage-deep)}
+.family-album .family-book-page{display:block;padding-block:45px 55px;animation:none}
+.family-album .family-page-label{display:grid;grid-template-columns:40px 1fr auto;gap:18px;align-items:center;margin-bottom:30px}
+.family-album .family-section-number{margin:0;font:italic 1.25rem var(--serif);color:var(--sage-deep)}
+.family-album .family-page-label h3{margin:0;font-size:clamp(1.8rem,3vw,2.6rem)}
+.family-album .family-note{max-width:330px;grid-column:auto}
+.family-album .family-note summary{min-width:150px;font-size:.75rem}
+.family-album .family-group-prints{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;padding:0;align-items:start}
+.family-album .family-group-prints .family-print{transform:none;margin:0}
+.family-album .family-group-prints .family-print:first-child{grid-column:span 2;max-width:none}
+.family-album .family-book-page[data-family-group="original-kids"] .family-group-prints>.family-print:first-child{grid-column:1/-1;max-width:780px;margin:0 auto 15px}
+.family-album .family-book-page[data-family-group="original-kids"] .family-group-prints,.family-album .family-book-page[data-family-group="grandkids"] .family-group-prints{grid-template-columns:repeat(2,minmax(0,1fr))}
+.family-album .family-book-page[data-family-group="grandkids"] .family-print:first-child{grid-column:auto}
+.family-album .family-cover-reference{margin:0}
+.family-album .family-book-end{padding:30px 0 0}
+.family-album .family-book-end>.hand{font:italic 1.8rem var(--serif)}
+@media(max-width:760px){
+ .family-album .family-cover{grid-template-columns:1fr;gap:30px;padding-block:35px 45px;max-width:520px}
+ .family-album .family-cover-copy{border:0;padding:0}.family-album .family-cover-photo{max-width:380px}
+ .family-album .family-page-label{grid-template-columns:30px 1fr;gap:12px}.family-album .family-note{grid-column:2;max-width:none}
+ .family-album .family-group-prints{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
+ .family-album .family-book-page{padding-block:30px 38px}
+ .family-album .family-index{flex-wrap:wrap;overflow:visible;gap:4px 18px}
+ .family-album .family-index button{font-size:.88rem}
+}
+@media(max-width:420px){
+ .family-album .family-group-prints,.family-album .family-book-page[data-family-group] .family-group-prints{grid-template-columns:1fr;max-width:none}
+ .family-album .family-group-prints .family-print:first-child{grid-column:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ @view-transition{navigation:none}
+ ::view-transition-old(root),::view-transition-new(root){animation:none!important}
+ .btn,.family-photo-button,.home-family-print,.journal-photo-strip>a,.journal-theme-links>a{translate:none!important}
+ .journal-story-image img,.entry-card-photo img{transform:none!important}
+}
+/* Theme sketches are decorative and adapt to every author-created label. */
+body[data-page="home"] .journal-theme-links{gap:20px;align-items:stretch}
+body[data-page="home"] .journal-theme-links>a{position:relative;flex:0 1 170px;min-width:0;min-height:170px;padding:10px 16px 18px;border:1px solid #ddc4b388;border-radius:24px 20px 25px 18px;background:#fffaf4;color:var(--ink);gap:8px;box-shadow:0 3px 0 #ddc4b32b}
+.theme-drawing{width:82px;height:72px;overflow:visible;transition:transform .3s ease}
+.theme-wash{fill:var(--theme-color,#efcfbc);opacity:.8}
+.theme-outline{fill:none;stroke:#75503b;stroke-width:1.4;stroke-linecap:round;transform:translate(2px,-2px)}
+.theme-scribble{fill:none;stroke:#49372e;stroke-width:1.5;stroke-linecap:round}
+body[data-page="home"] .journal-theme-name{font:400 1.2rem/1.35 var(--serif);text-decoration:none;overflow-wrap:anywhere;text-align:center}
+body[data-page="home"] .journal-theme-count{font-size:.72rem;color:var(--ink-soft)}
+body[data-page="home"] .journal-theme-links>a:focus-visible{outline:3px solid var(--sage-deep);outline-offset:5px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){body[data-page="home"] .journal-theme-links>a:hover .theme-drawing{transform:translateY(-3px) rotate(-5deg)}}
+/* A responsive path through the visible journey sections. */
+.journal-journey-list{position:relative;gap:30px}
+.journal-journey-list:before{content:"";position:absolute;left:20px;right:20px;top:22px;border-top:2px dashed #c49373;pointer-events:none}
+.journal-journey-list li{position:relative}
+.journal-journey-list a{flex-direction:column;border:0;padding:0;gap:18px}
+.journal-journey-list .journey-step{display:grid;place-items:center;width:46px;height:46px;background:var(--paper);border:1px solid #c49373;border-radius:48% 52% 45% 55%;z-index:1;font-size:1.1rem;color:var(--sage-deep)}
+.journal-journey-list .is-current .journey-step{background:#f2d7c3;box-shadow:0 0 0 5px var(--paper)}
+.journey-step-copy{width:100%;padding:0 6px 0 0;gap:12px}
+.journey-stop-photo{width:100%;height:155px;object-fit:contain;object-position:left center;border-radius:4px}
+.journey-entry-count{font:400 .75rem var(--sans);color:var(--ink-soft)}
+.journal-journey-list .journey-step-arrow{position:absolute;right:8px;top:12px;background:var(--paper);padding:0 8px}
+.journal-journey-list .journey-now{background:#f2dfcf;padding:7px 12px;border-radius:20px;color:#78452f;font-size:.73rem}
+.journal-moment{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:50px;align-items:center;padding-block:45px 65px;border-top:1px solid var(--line)}
+.moment-photo{display:block;transition:translate .25s ease}
+.moment-photo img{width:100%;height:auto;max-height:420px;object-fit:contain;border-radius:5px}
+.moment-caption{font:italic clamp(1.4rem,2.5vw,2rem)/1.5 var(--serif);color:var(--ink);overflow-wrap:anywhere}
+.journal-moment h2{font-size:1.35rem;line-height:1.5}.journal-moment .eyebrow{color:var(--sage-deep)}
+.surprise-entry{margin-top:24px;border-bottom:1px solid var(--line);padding:12px 6px;min-height:44px}
+.pn-wrap .pn{display:flex;flex-direction:column;align-items:start;gap:12px;text-decoration:none;padding:22px;border-radius:6px}
+.pn-wrap .pn-photo{width:100%;height:150px;object-fit:contain;object-position:left center;border-radius:3px}
+.pn-wrap .pn strong{font:400 1.4rem/1.4 var(--serif);overflow-wrap:anywhere}
+#viewer #v-cap{font:italic 1.05rem/1.6 var(--serif);margin:14px auto;max-width:650px}
+#viewer #v-link{display:inline-block;min-height:44px;padding:10px 0;color:var(--sage-deep)}
+@media(max-width:760px){
+ body[data-page="home"] .journal-theme-links{gap:14px}
+ body[data-page="home"] .journal-theme-links>a{flex:1 1 130px;max-width:220px;padding:8px 12px 16px}
+ .journal-journey-list{gap:30px}.journal-journey-list:before{left:22px;right:auto;top:20px;bottom:20px;border-top:0;border-left:2px dashed #c49373}
+ .journal-journey-list a{flex-direction:row;gap:20px;padding:0}.journal-journey-list .journey-step{flex:none}.journey-step-copy{padding-top:8px}.journey-stop-photo{height:auto;max-height:200px;max-width:340px}
+ .journal-journey-list .journey-step-arrow{display:none}
+ .journal-moment{grid-template-columns:1fr;gap:24px;padding-block:30px 40px}.moment-caption{font-size:1.5rem}
+ .pn-wrap .pn-photo{height:110px}.pn-wrap .pn strong{font-size:1.2rem}
+}
+@media(prefers-reduced-motion:reduce){.theme-drawing{transform:none!important}}

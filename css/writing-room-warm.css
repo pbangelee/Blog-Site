@@ -1,0 +1,20 @@
+/* Warm journal palette shared by the public site and Writing Room */
+body.guided-room{background:#faf6f0;color:#49372e}
+.guided-room .writer-header{background:#fbf6ef;border-bottom:1px solid #e5d5c7}
+.guided-room .writer-main,.guided-room .workspace-content{color:#49372e}
+.guided-room .writer-navigation{background:#f4e9dd;border-radius:16px}
+.guided-room .writer-navigation button[aria-pressed="true"]{background:#7a4938;color:#fff8f0;border-radius:10px}
+.guided-room .btn{background:#7a4938;color:#fff8f0;border-color:#7a4938}
+.guided-room .btn:hover,.guided-room .btn:focus-visible{background:#5d352a;color:#fffaf4}
+.guided-room .v-btn{border-color:#d5bba9;color:#704634;background:#fffaf5}
+.guided-room .v-btn:hover{background:#efe0d1}
+.guided-room input,.guided-room textarea,.guided-room select{background:#fffdf9;border-color:#d9c6b7;color:#49372e}
+.guided-room .guided-pane,.guided-room .cover-panel,.guided-room .photo-library{border-color:#e6d7ca}
+.guided-room .guided-steps button[aria-current="step"]{color:#7a4938}
+.guided-room .success-note{background:#f2e5d7;border:1px solid #d8bba5;border-radius:18px;padding:28px}
+.guided-room .success-note strong{font-family:Georgia,serif;font-size:1.5rem;font-weight:normal;color:#633d30}
+.guided-room .detail-grid{align-items:start}
+.guided-room .cover-panel{background:#f7eee5;border-radius:18px;padding:22px}
+.guided-room .reader-preview-canvas{overflow:hidden}
+.guided-room .reader-preview-canvas iframe{display:block;width:100%;border:0}
+@media(max-width:700px){.guided-room .writer-header .brand-logo{max-width:155px}.guided-room .detail-grid{display:block}.guided-room .cover-panel{margin-top:24px}}

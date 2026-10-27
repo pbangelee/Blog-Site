@@ -1,0 +1,1 @@
+Updated beach photo to the supplied 1920 × 1280 original with optimized mobile thumbnail. Removed the closing call to action. Homepage links now use warm blush rounded buttons, subtle hover lift and visible keyboard focus. Removed Lessons along the way; A journey of faith, family, and service. appears directly beneath the title. No SQL changes.

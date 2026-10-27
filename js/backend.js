@@ -15,7 +15,7 @@ window.JournalBackend = (() => {
   }
   function entryFromRow(row,signed,journal=window.JOURNAL){
     const photos={},pathToId={};
-    (row.photos||[]).forEach((p,i)=>{const id=`${row.id}-photo-${i}`;pathToId[p.path]=id;photos[id]={src:signed[p.path]||'',alt:String(p.alt||row.title),caption:escape(p.caption||''),captionText:String(p.caption||''),sample:p.sample===true};});
+    (row.photos||[]).forEach((p,i)=>{const id=`${row.id}-photo-${i}`;pathToId[p.path]=id;photos[id]={path:p.path,src:signed[p.path]||'',alt:String(p.alt||row.title),caption:escape(p.caption||''),captionText:String(p.caption||''),sample:p.sample===true,coverOnly:p.coverOnly===true,coverOriginal:p.coverOriginal||null};});
     let cover=pathToId[row.cover_path]||`${row.id}-cover`;
     if(!photos[cover])photos[cover]={src:journal.site.heroImage,alt:journal.site.heroAlt,caption:'',sample:true};
     const body=[];
@@ -26,7 +26,7 @@ window.JournalBackend = (() => {
       if(b.type==='photo'&&pathToId[b.photo])body.push({type:'photo',id:pathToId[b.photo],layout:b.layout==='center'?'center':'full'});
       if(b.type==='pair'){const ids=(b.photos||[]).map(p=>pathToId[p]).filter(Boolean);if(ids.length)body.push({type:'group',ids});}
     });
-    return {photos,entry:{id:row.id,chapter:row.chapter_id,title:escape(row.title),titleText:String(row.title),date:row.entry_date,excerpt:escape(row.excerpt),cover,body}};
+    return {photos,entry:{id:row.id,chapter:row.chapter_id,title:escape(row.title),titleText:String(row.title),date:row.entry_date,excerpt:escape(row.excerpt),cover,body,themes:Array.isArray(row.themes)?row.themes.filter(t=>typeof t==='string'):[],byline:String(row.byline||''),journeyId:row.journey_id||null}};
   }
   async function publishedJournal(){
     const db=connect();
@@ -35,6 +35,11 @@ window.JournalBackend = (() => {
       db.from('journal_chapters').select('*').order('sort_order').order('id')
     ]);
     if(entriesResult.error||chaptersResult.error)throw entriesResult.error||chaptersResult.error;
+    if(window.JournalJourney){
+      const settings=await Promise.all([db.from('journal_journeys').select('*').order('sort_order').order('id'),db.from('journal_themes').select('*').order('sort_order').order('id')]);
+      settings.forEach(r=>{if(r.error&&!['42P01','PGRST205'].includes(r.error.code))throw r.error;});
+      if(!settings.some(r=>r.error))window.JournalJourney.load(settings[0].data,settings[1].data);
+    }
     const journal=window.JOURNAL,rows=entriesResult.data,chapters=chaptersResult.data;
     const signed=await signedPhotos([...chapters.map(c=>c.image_path),...rows.flatMap(e=>(e.photos||[]).map(p=>p.path))]);
     journal.chapters=chapters.map(c=>({id:c.id,title:escape(c.title),titleText:c.title,description:escape(c.description),intro:escape(c.intro),order:c.sort_order,image:signed[c.image_path]||c.sample_image||journal.site.heroImage}));

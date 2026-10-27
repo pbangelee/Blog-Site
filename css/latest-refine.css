@@ -1,0 +1,166 @@
+/* Latest entry section: one grid, flush photo frames, consistent spacing.
+   Delete this file and its <link> in index.html to go back. */
+
+/* Heading row: link sits on the heading's baseline instead of floating mid-height. */
+.home-latest .section-heading { align-items: flex-end; margin-bottom: 40px; }
+.home-latest .section-heading .journal-text-link { padding-bottom: 12px; }
+
+/* Two equal columns with generous, even gutters. Rows are 56px apart. */
+.home-latest .journal-story-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(40px, 6vw, 96px);
+  row-gap: 56px;
+}
+
+/* ---- Featured entry: photo flush left, copy vertically centred beside it ---- */
+.home-latest .journal-story-featured {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+  padding-bottom: 56px;
+}
+.home-latest .journal-story-featured .journal-story-copy { max-width: 32rem; }
+
+/* Every photo is a fixed frame that is cropped to fit, never shrunk and centred. */
+.home-latest .journal-story-image { border-radius: 4px; background: #efe5d8; }
+.home-latest .journal-story-image img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  min-height: 0;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: 50% 28%;
+  margin: 0;
+  border-radius: 0;
+}
+.home-latest .journal-story-image .journal-paper-cover { height: 100%; min-height: 0; border-radius: 0; }
+.home-latest .journal-story-featured .journal-story-image { aspect-ratio: 5 / 4; }
+
+/* ---- Smaller entries: square thumbnail, text aligned to its top edge ---- */
+.home-latest .journal-story-small {
+  grid-template-columns: clamp(112px, 11vw, 160px) minmax(0, 1fr);
+  gap: clamp(20px, 2.4vw, 32px);
+  align-items: start;
+}
+.home-latest .journal-story-small .journal-story-image { aspect-ratio: 1 / 1; margin: 0; }
+.home-latest .journal-story-small .journal-story-copy { padding-top: 2px; }
+
+/* ---- Phones ---- */
+@media (max-width: 760px) {
+  .home-latest .section-heading { margin-bottom: 28px; }
+  .home-latest .journal-story-grid { grid-template-columns: minmax(0, 1fr); row-gap: 36px; }
+  .home-latest .journal-story-featured { grid-template-columns: 1fr; gap: 24px; padding-bottom: 36px; }
+  .home-latest .journal-story-featured .journal-story-image { aspect-ratio: 4 / 3; }
+  .home-latest .journal-story-small { grid-template-columns: 104px minmax(0, 1fr); gap: 18px; }
+}
+
+/* A narrower, more compact journal section with generous outer margins. */
+body[data-page="home"] .home-latest{width:min(980px,calc(100% - 8rem));padding-block:42px 46px}
+.home-latest .section-heading{margin-bottom:28px}
+.home-latest .journal-story-grid{column-gap:36px;row-gap:32px}
+.home-latest .journal-story-featured{gap:36px;padding-bottom:32px}
+.home-latest .journal-story-small{grid-template-columns:96px minmax(0,1fr);gap:18px}
+.home-latest .journal-story-small h3{font-size:1.55rem}
+@media(max-width:1000px){
+ body[data-page="home"] .home-latest{width:calc(100% - 5rem)}
+ .home-latest .journal-story-grid{column-gap:26px}
+ .home-latest .journal-story-small{grid-template-columns:80px minmax(0,1fr);gap:14px}
+}
+@media(max-width:760px){
+ body[data-page="home"] .home-latest{width:calc(100% - 2.5rem);padding-block:32px 36px}
+ .home-latest .journal-story-featured{gap:22px;padding-bottom:26px}
+ .home-latest .journal-story-small{grid-template-columns:90px minmax(0,1fr);gap:16px}
+}
+
+/* Featured entry on the left, two recent entries stacked on the right. */
+.home-latest .journal-story-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:28px 36px;align-items:start}
+.home-latest .journal-story-featured{display:block;grid-column:1;grid-row:span 2;padding:0 36px 0 0;border-bottom:0;border-right:1px solid var(--line)}
+.home-latest .journal-story-featured .journal-story-copy{max-width:none;padding-top:20px}
+.home-latest .journal-story-featured .journal-story-image{aspect-ratio:5/4}
+.home-latest .journal-story-featured h3{font-size:clamp(1.8rem,3vw,2.5rem)}
+.home-latest .journal-story-small{grid-column:2;grid-template-columns:100px minmax(0,1fr);gap:18px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.home-latest .journal-story-small:last-child{border:0;padding-bottom:0}
+.home-latest .journal-story-small h3{font-size:1.5rem}
+.home-latest .journal-story-small .journal-story-excerpt{-webkit-line-clamp:2}
+.home-latest .journal-story-featured:only-child{grid-column:1/-1;grid-row:auto;border:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.home-latest .journal-story-featured:only-child .journal-story-copy{padding-top:0}
+body[data-page="home"] .journal-theme-count{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:7px}
+.theme-count-number{display:grid;place-items:center;min-width:28px;height:28px;padding:0 6px;border:1px solid #cda98e;border-radius:48% 52% 46% 54%;font:italic 1rem/1 var(--serif);color:var(--ink)}
+.theme-count-label{font:400 .64rem/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+/* A compact mosaic: every photograph remains a link to the viewer. */
+body[data-page="home"] .journal-photo-strip{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:repeat(2,155px);gap:12px;align-items:stretch}
+body[data-page="home"] .journal-photo-strip>a{position:relative;margin:0!important;padding:0;min-height:0;overflow:hidden;border-radius:4px;display:block}
+body[data-page="home"] .journal-photo-strip>a:first-child{grid-row:span 2}
+body[data-page="home"] .journal-photo-strip>a:nth-child(4){grid-column:2/4}
+body[data-page="home"] .journal-photo-strip>a:only-child{grid-column:1/-1;grid-row:1/3}
+body[data-page="home"] .journal-photo-strip>a:nth-child(2):last-child{grid-column:2/4;grid-row:1/3}
+body[data-page="home"] .journal-photo-strip>a:nth-child(3):last-child{grid-column:2/4}
+body[data-page="home"] .journal-photo-strip:has(>a:nth-child(3):last-child)>a:nth-child(2){grid-column:2/4}
+body[data-page="home"] .journal-photo-strip img{width:100%;height:100%;max-height:none;max-width:none;aspect-ratio:auto;object-fit:cover;object-position:center 30%;border-radius:0;transition:filter .25s ease}
+body[data-page="home"] .journal-photo-strip>a:is(:hover,:focus-visible){translate:none}
+body[data-page="home"] .journal-photo-strip>a:is(:hover,:focus-visible) img{filter:brightness(.92);transform:none}
+@media(max-width:900px){.home-latest .journal-story-grid{gap:24px}.home-latest .journal-story-featured{padding-right:24px}.home-latest .journal-story-small{grid-template-columns:80px minmax(0,1fr);gap:14px}}
+@media(max-width:760px){
+ .home-latest .journal-story-grid{grid-template-columns:1fr;gap:26px}
+ .home-latest .journal-story-featured,.home-latest .journal-story-featured:only-child{display:block;grid-column:1;grid-row:auto;padding:0 0 26px;border-right:0;border-bottom:1px solid var(--line)}
+ .home-latest .journal-story-featured:only-child .journal-story-copy{padding-top:20px}
+ .home-latest .journal-story-small{grid-column:1;grid-template-columns:100px minmax(0,1fr);gap:18px}
+ body[data-page="home"] .journal-photo-strip{grid-template-columns:1fr 1fr;grid-template-rows:180px 140px 140px;gap:10px}
+ body[data-page="home"] .journal-photo-strip>a:first-child{grid-column:1/-1;grid-row:auto}
+ body[data-page="home"] .journal-photo-strip>a:nth-child(4){grid-column:1/-1}
+ body[data-page="home"] .journal-photo-strip:has(>a:only-child),body[data-page="home"] .journal-photo-strip:has(>a:nth-child(2):last-child),body[data-page="home"] .journal-photo-strip:has(>a:nth-child(3):last-child){grid-template-rows:180px 140px}
+ body[data-page="home"] .journal-photo-strip>a:only-child{grid-row:1/3}
+ body[data-page="home"] .journal-photo-strip>a:nth-child(2):last-child{grid-column:1/-1;grid-row:2}
+ body[data-page="home"] .journal-photo-strip:has(>a:nth-child(3):last-child)>a:nth-child(2),body[data-page="home"] .journal-photo-strip>a:nth-child(3):last-child{grid-column:auto}
+}
+
+/* Warm, rounded navigation buttons with gentle hover movement. */
+body[data-page="home"] .journal-text-link,
+body[data-page="home"] .home-family-copy .family-album-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 10px 22px;
+  font: 400 1.05rem/1.3 'Instrument Serif', Georgia, serif;
+  letter-spacing: .015em;
+  text-align: center;
+  text-transform: none;
+  color: #653f32;
+  background: #f2e1d5;
+  border: 1px solid #d9b9a5;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 #b98b7020;
+  text-decoration: none;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+body[data-page="home"] .journal-text-link > span[aria-hidden],
+body[data-page="home"] .family-album-link > span[aria-hidden] { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  body[data-page="home"] .journal-text-link:hover,
+  body[data-page="home"] .home-family-copy .family-album-link:hover {
+    background: #e9cdbb;
+    box-shadow: 0 4px 10px #80503912;
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+}
+body[data-page="home"] .journal-text-link:focus-visible,
+body[data-page="home"] .family-album-link:focus-visible {
+  outline: 2px solid #653f32;
+  outline-offset: 4px;
+}
+body[data-page="home"] .journal-text-link:active,
+body[data-page="home"] .family-album-link:active { transform: translateY(0); }
+body[data-page="home"] .photo-led-copy .hero-subtitle { margin-top: 20px; }
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="home"] .journal-text-link,
+  body[data-page="home"] .family-album-link { transition: none; transform: none !important; }
+}
+/* v18: keep the original story count styling and center the numeral/label together. */
+.journal-theme-count{justify-content:center;text-align:center;gap:8px}
+.journal-theme-count .theme-count-number{flex-shrink:0}

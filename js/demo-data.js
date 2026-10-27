@@ -5,7 +5,7 @@ window.JOURNAL_DEMO = {
       "id": "demo-atw-before",
       "title": "[Demo] Before the Journey",
       "description": "Suitcases, goodbyes, and a heart full of possibilities.",
-      "intro": "A collection of fictional demo letters about getting ready for something new. All entries in this chapter are fictional demonstration content.",
+      "intro": "A collection of fictional demo entries about getting ready for something new. All entries in this chapter are fictional demonstration content.",
       "sample_image": "images/chapter-before.jpg",
       "sort_order": 100
     },
@@ -19,7 +19,7 @@ window.JOURNAL_DEMO = {
     },
     {
       "id": "demo-atw-coast",
-      "title": "[Demo] Letters from the Coast",
+      "title": "[Demo] Entries from the Coast",
       "description": "Ordinary days and new beginnings in San Diego.",
       "intro": "Fictional demo stories inspired by coastal mornings and unfamiliar streets. All entries in this chapter are fictional demonstration content.",
       "sample_image": "images/chapter-mission.jpg",
@@ -29,7 +29,7 @@ window.JOURNAL_DEMO = {
       "id": "demo-atw-moments",
       "title": "[Demo] Little Moments",
       "description": "The everyday details worth remembering.",
-      "intro": "Fictional demo letters about kindness, conversations, and little surprises. All entries in this chapter are fictional demonstration content.",
+      "intro": "Fictional demo entries about kindness, conversations, and little surprises. All entries in this chapter are fictional demonstration content.",
       "sample_image": "images/mtc-garden.jpg",
       "sort_order": 103
     },
@@ -81,7 +81,7 @@ window.JOURNAL_DEMO = {
     },
     {
       "id": "443352b1-7d00-543b-811f-0e385670fe4d",
-      "title": "[Demo] A Letter for the Road",
+      "title": "[Demo] A Entry for the Road",
       "chapter_id": "demo-atw-before",
       "entry_date": "2026-01-21",
       "excerpt": "Someone tucked a handwritten note into the pocket of my bag. I found it at exactly the right moment.",
@@ -426,7 +426,7 @@ window.JOURNAL_DEMO = {
       "title": "[Demo] The Good I Nearly Missed",
       "chapter_id": "demo-atw-looking-back",
       "entry_date": "2026-06-22",
-      "excerpt": "Writing these letters helps me notice what I might otherwise forget at the end of a full day.",
+      "excerpt": "Writing these entries helps me notice what I might otherwise forget at the end of a full day.",
       "paragraphs": [
         "At first, all I could remember was being tired. Then I began listing the smaller things: a laugh over lunch, a thoughtful message, a moment when someone felt heard.",
         "The day had held both difficulty and goodness. Remembering one did not erase the other, but it gave me a fuller picture."
@@ -459,7 +459,7 @@ window.JOURNAL_DEMO = {
     },
     {
       "id": "4787a58f-0df7-55cb-b28a-662a6cc0c7aa",
-      "title": "[Demo] Until the Next Letter",
+      "title": "[Demo] Until the Next Entry",
       "chapter_id": "demo-atw-looking-back",
       "entry_date": "2026-07-08",
       "excerpt": "There are still stories I am figuring out how to tell. For now, I am grateful for this little place to keep them.",

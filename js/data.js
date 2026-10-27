@@ -18,7 +18,7 @@ window.JOURNAL = {
     photo: "images/author-placeholder.jpg",
     photoAlt: "Placeholder portrait of the author",
     annotation: "Hello, friends!",
-    welcome: "Welcome, and thank you for stopping by. This is a place where I share what I'm seeing, feeling, and learning. [Replace this paragraph with her own words.]"
+    welcome: "Welcome, and thank you for stopping by. This is a place where I share what I'm seeing, feeling, and learning."
   },
 
   /* Sample pins for the illustrated map. Each links to a real entry above.
